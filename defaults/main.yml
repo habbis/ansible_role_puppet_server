@@ -1,0 +1,18 @@
+---
+# defaults file for ansible_role_puppet_server
+puppet_server: hf-puppet2.no.habbfarm.net
+# ubuntu 20.04
+ubuntu_debfile: puppet7-release-focal.deb
+# debain 11
+debian_debfile: puppet7-release-bullseye.deb
+# rhel 8
+rpmfile_release8: puppet7-release-el-8.noarch.rpm
+
+delete_puppet_ssl_dir: false
+apt_purge: false
+yum_purge: false
+run_puppet_agent: false
+fix_hosts: false
+# if having problem with
+# apt update repo problem.
+fix_apt_missing: false

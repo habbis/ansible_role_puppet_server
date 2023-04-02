@@ -1,0 +1,19 @@
+---
+- name: create hiera dir
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - /etc/puppetlabs/code/environments/production/hieradata
+    - /etc/puppetlabs/code/environments/production/hieradata/node
+    - /etc/puppetlabs/code/environments/production/hieradata/role
+    - /etc/puppetlabs/code/environments/production/hieradata/location
+
+
+- name: set hiera files
+  ansible.builtin.template:
+    src: templates/hiera.yaml.j2
+    dest: /etc/puppetlabs/puppet/hiera.yaml
+    owner: root
+    group: root
+    mode: '0644'

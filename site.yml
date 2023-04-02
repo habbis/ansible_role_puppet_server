@@ -1,0 +1,13 @@
+---
+- name: setup puppetserver
+  gather_facts: yes
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  hosts: puppetserver
+  vars_files:
+    -  defaults/main.yml
+    #-  defaults/secrets.yml
+
+  roles:
+    - { role: ../ansible_role_puppet_server }
