@@ -38,6 +38,8 @@
     state: started
   ignore_errors: yes
 
+- include_tasks: setup-puppetserver.yml
+
 - name: check puppet agent lock exist
   ansible.builtin.stat:
     path: /opt/puppetlabs/puppet/cache/state/agent_catalog_run.lock
