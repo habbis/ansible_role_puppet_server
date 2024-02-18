@@ -42,10 +42,13 @@
   command: apt update -y --fix-missing
   when: (fix_apt_missing and ansible_pkg_mgr == "apt")
 
+- name: Run the equivalent of "apt-get update" as a separate step
+  ansible.builtin.apt:
+    update_cache: yes
+
 - name: install {{ package }}
   ansible.builtin.apt:
     pgk:
       - puppetserver
       - puppet-agent
-    update_cache: yes
   when: ansible_pkg_mgr == "apt"
