@@ -46,9 +46,10 @@
   ansible.builtin.apt:
     update_cache: yes
 
-- name: install {{ package }}
-  ansible.builtin.apt:
-    pgk:
+- name: Install puppetserver and puppet-agent
+  ansible.builtin.package:
+    name:
       - puppetserver
       - puppet-agent
+    state: latest
   when: ansible_pkg_mgr == "apt"
