@@ -1,23 +1,23 @@
 ---
-- name: Download "{{ ubuntu_debfile }}"
+- name: Download {{ ubuntu_debfile }}
   get_url:
     url: "https://apt.puppetlabs.com/{{ ubuntu_debfile }}"
     dest: "/tmp/{{ ubuntu_debfile }}"
   when: (ansible_distribution == "Ubuntu")
 
-- name: Download "{{ debian_debfile }}"
+- name: Download {{ debian_debfile }}
   get_url:
     url: "https://apt.puppetlabs.com/{{ debian_debfile }}"
     dest: "/tmp/{{ debian_debfile }}"
   when: (ansible_distribution == "Debian")
 
-- name: Download "{{ ubuntu_debfile }}"
+- name: Download {{ ubuntu_debfile }}
   get_url:
     url: "https://apt.puppetlabs.com/{{ ubuntu_debfile }}"
     dest: "/tmp/{{ ubuntu_debfile }}"
   when: (ansible_distribution == "Ubuntu")
 
-- name: Download "{{ debian_debfile }}"
+- name: Download {{ debian_debfile }}
   get_url:
     url: "https://apt.puppetlabs.com/{{ debian_debfile }}"
     dest: "/tmp/{{ debian_debfile }}"
@@ -28,12 +28,12 @@
   command: apt update -y --fix-missing
   when: (fix_apt_missing and ansible_pkg_mgr == "apt")
 
-- name: Install a "{{ ubuntu_debfile }}"·
+- name: Install {{ ubuntu_debfile }}·
   apt:
     deb: "/tmp/{{ ubuntu_debfile }}"
   when: ansible_distribution == "Ubuntu"
 
-- name: Install a "{{ debian_debfile }}"
+- name: Install {{ debian_debfile }}
   apt:
     deb: "/tmp/{{ debian_debfile }}"
   when: ansible_distribution == "Debian"
@@ -42,8 +42,8 @@
   command: apt update -y --fix-missing
   when: (fix_apt_missing and ansible_pkg_mgr == "apt")
 
-- name: install "{{ package }}"
-  apt:
+- name: install {{ package }}
+  ansible.builtin.apt:
     pgk:
       - puppetserver
       - puppet-agent
